@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VoxPop - Public Feed</title>
+</head>
+<body>
+    <h1>VoxPop Public Feed</h1>
+
+    <p><a href="/comments/new">Leave a Comment</a></p>
+
+    <ul>
+    {% for comment in comments %}
+        <li>
+            <strong>[{{ comment.category|capitalize }}]</strong>
+            {{ comment.text }}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <hr>
+
+    {% if prev_page %}
+      <a href="/feed?page={{ prev_page }}">Previous Page</a>
+    {% endif %}
+
+    |
+    {% if next_page %}
+      <a href="/feed?page={{ next_page }}">Next Page</a>
+    {% endif %}
+
+    <p>Page: {{ current_page }}</p>
+</body>
+</html>
+
